@@ -6,7 +6,7 @@ class Student {
   public $country = 'None';
 
   protected $registration_id;
-  private $tuition = 0.00;
+  private $tuition = 500.00;
 
   public function full_name() {
     return $this->first_name . ' ' . $this->last_name;
@@ -22,6 +22,10 @@ class Student {
 
   private function hello_me() {
     return 'Hello me!';
+  }
+
+  public function tuition_fmt() {
+    return '$' . $this->tuition;
   }
 
 }
@@ -45,3 +49,8 @@ echo $student1->hello_world() . '<br />';
 //echo $student1->hello_family() . '<br />';
 //echo $student1->hello_me() . '<br />';
 echo $student1->hello_parent() . '<br />';
+
+//overloading defines tuition even though its private
+$student1->tuition = 1000;
+echo $student1->tuition. '<br />';
+echo $student1->tuition_fmt() . '<br />';
