@@ -23,9 +23,19 @@
   define("WWW_ROOT", $doc_root);
 
   require_once('functions.php');
-  
+
   // Load class definitions manually
+  // individually
+  // require_once('classes/bicycle.class.php');
+  // all classes in a directory
+  // foreach(glob('classes/*.class.php') as $file) {
+  //   require_once($file);
+  // }
 
   // Autoload class definitions
-
+  spl_autoload_register(function($class_name) {
+    if (preg_match('/\A\w+\Z/', $class_name)) {
+      include '../private/classes/' . $class_name . '.class.php';
+    }
+  });
 ?>
